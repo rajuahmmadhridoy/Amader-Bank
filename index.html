@@ -54,9 +54,9 @@
             <div class="col-md-6">
                 <div class="submit-area">
                     <h4>withdraw</h4>
-                    <input class="form-control" type="text" placeholder="$ amaunt you want to withdraw">
+                    <input id="withdrewamount" class="form-control" type="text" placeholder="$ amaunt you want to withdraw">
                     <br>
-                    <button class="btn btn-success">Withdraw</button>
+                    <button id="addwithdrew" class="btn btn-success">Withdraw</button>
                 </div>
     
             </div>
@@ -84,13 +84,27 @@
 
             document.getElementById('depositAmount').value = ""
             
-            UpdateSpanText("depositAmount", depositNumber);
+            UpdateSpanText("currentDeposit", depositNumber);
             UpdateSpanText("currentBalance", depositNumber);
            
 
-            
+             
 
         })
+         // withdrew button event handler
+         const withdrawBtn = document.getElementById('addwithdrew');
+         withdrawBtn.addEventListener('click', function(){
+            const withdrawNumber = InputNumber('withdrewAmount');
+             console.log(withdrawNumber);
+         })
+         function InputNumber(id){
+             const withdrewAmount = document.getElementById(id).value;
+             const withdrewnumber = parseFloat(withdrewAmount);
+             return withdrewnumber;
+         }
+
+
+
         function UpdateSpanText(id, depositNumber){
                 const current = document.getElementById(id).innerText;
                 const currentNumber = parseFloat(current);
